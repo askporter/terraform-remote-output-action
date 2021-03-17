@@ -1,7 +1,5 @@
 FROM hashicorp/terraform:light
 
-COPY entrypoint.sh ./entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 
-CMD terraform init
-
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
