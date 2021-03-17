@@ -8,7 +8,14 @@ ls -lahR /github
 
 ORGANIZATION=$1
 WORKSPACE=$2
-NAME=$3
+TOKEN=$3
+NAME=$4
+
+cat << EOF > $HOME/.terraformrc
+credentials "app.terraform.io" {
+  token = "$TOKEN"
+}
+EOF
 
 cat << EOF > main.tf
 terraform {

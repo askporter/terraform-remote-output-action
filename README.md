@@ -6,6 +6,7 @@ Inputs (all required):
 - `organization`: The Terraform cloud organization name
 - `workspace`: The name of the workspace in the above organization
 - `name`: The name of the variable to get
+- `token`: The token used to access Terraform cloud
 
 Example usage:
 
@@ -40,6 +41,8 @@ jobs:
           workspace: platform-dev
           # The name of the output to retrieve
           name: grieg_lambda_arn
+          # The token used to access terraform cloud
+          token: ${{ secrets.TERRAFORM_CLOUD_TOKEN }}
 
       - name: Deploy lambda
         env:
