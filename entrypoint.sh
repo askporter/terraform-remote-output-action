@@ -12,8 +12,6 @@ credentials "app.terraform.io" {
 }
 EOF
 
-ls -lah $HOME
-
 cat << EOF > main.tf
 terraform {
   required_version = ">= 0.14"
