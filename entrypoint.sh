@@ -1,6 +1,11 @@
 #!/bin/sh
 set -e
 
+echo "user: $USER"
+echo "home: $HOME"
+echo "============"
+ls $HOME
+
 ORGANIZATION=$1
 WORKSPACE=$2
 NAME=$3
