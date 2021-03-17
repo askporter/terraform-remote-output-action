@@ -1,0 +1,22 @@
+name: 'Terraform remote state'
+description: 'Get a variable from a terraform remote workspace'
+inputs:
+  organization:
+    description: 'The organization that owns the workspace'
+    required: true
+  workspace:
+    description: 'The name of the workspace'
+    required: true
+  name:
+    description: 'The name of the output variable to get'
+    required: false
+outputs:
+  value:
+    description: 'The value of the output in remote state'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.organization }}
+    - ${{ inputs.workspace }}
+    - ${{ inputs.name }}
