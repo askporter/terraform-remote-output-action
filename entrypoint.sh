@@ -4,7 +4,7 @@ set -e
 echo "user: $USER"
 echo "home: $HOME"
 echo "============"
-ls $HOME
+ls -lahR /github
 
 ORGANIZATION=$1
 WORKSPACE=$2
