@@ -1,12 +1,9 @@
-#!/bin/bash
+#!/bin/sh
+set -e
 
 ORGANIZATION=$1
 WORKSPACE=$2
 NAME=$3
-
-echo $ORGANIZATION
-echo $WORKSPACE
-echo $NAME
 
 cat << EOF > main.tf
 terraform {
