@@ -1,11 +1,6 @@
 #!/bin/sh
 set -e
 
-echo "user: $USER"
-echo "home: $HOME"
-echo "============"
-ls -lahR /github
-
 ORGANIZATION=$1
 WORKSPACE=$2
 TOKEN=$3
@@ -16,6 +11,8 @@ credentials "app.terraform.io" {
   token = "$TOKEN"
 }
 EOF
+
+ls -lah $HOME
 
 cat << EOF > main.tf
 terraform {
