@@ -29,5 +29,6 @@ terraform init
 
 for name in $NAMES
 do
+    echo $name
     echo "::set-output name=$name::$(terraform output $name)"
 done
