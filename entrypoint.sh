@@ -17,12 +17,13 @@ EOF
 cat << EOF > main.tf
 terraform {
   required_version = ">= 0.14"
+  required_providers {}
   backend "s3" {}
 }
 EOF
 
 cat << EOF > backend.tfbackend
-role_arn="${ROLE_ARN}"
+role_arn = "${ROLE_ARN}"
 bucket = "${BUCKET}"
 key = "${BUCKET_KEY}"
 region = "${REGION}"
