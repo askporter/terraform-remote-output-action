@@ -1,14 +1,20 @@
 name: 'Terraform remote state'
 description: 'Get a variable from a terraform remote workspace'
 inputs:
-  organization:
-    description: 'The organization that owns the workspace'
+  role_arn:
+    description: 'The account arn of the account where the terraform state lives'
     required: true
-  workspace:
-    description: 'The name of the workspace'
+  bucket:
+    description: 'The bucket name of the bucket where the terraform state lives'
     required: true
-  token:
-    description: 'The access token for accessing Terraform cloud'
+  bucket_key:
+    description: 'The bucket name of the terraform states path within the bucket'
+    required: true
+  region:
+    description: 'The AWS region where the terraform state lives eg: (eu-west-2)'
+    required: true
+  dynamodb_table_name:
+    description: 'The dynamodb table name where the terraform lock lives'
     required: true
   name:
     description: 'The name of the output variable to get. If omitted, returns all outputs.'
@@ -17,7 +23,10 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.organization }}
-    - ${{ inputs.workspace }}
-    - ${{ inputs.token }}
+    - ${{ inputs.role_arn }}
+    - ${{ inputs.bucket }}
+    - ${{ inputs.role_arn }}
+    - ${{ inputs.bucket_key }}
+    - ${{ inputs.region }}
+    - ${{ inputs.dynamodb_table_name }}
     - ${{ inputs.name }}
