@@ -25,7 +25,6 @@ runs:
   args:
     - ${{ inputs.role_arn }}
     - ${{ inputs.bucket }}
-    - ${{ inputs.role_arn }}
     - ${{ inputs.bucket_key }}
     - ${{ inputs.region }}
     - ${{ inputs.dynamodb_table_name }}
