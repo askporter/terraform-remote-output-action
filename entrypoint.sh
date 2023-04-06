@@ -8,13 +8,18 @@ REGION=$4
 DYNAMODB_TABLE_NAME=$5
 NAMES=$6
 
+local_dir_name=terraform-remote-output-action
+
+mkdir -p $local_dir_name
+cd $local_dir_name
+
 cat << EOF > $HOME/.terraformrc
 credentials "app.terraform.io" {
   token = "$TOKEN"
 }
 EOF
 
-cat << EOF > main.tf
+cat << EOF > $local_dir_name/main.tf
 terraform {
   required_version = ">= 0.14"
   required_providers {}
@@ -22,7 +27,7 @@ terraform {
 }
 EOF
 
-cat << EOF > backend.tfbackend
+cat << EOF > $local_dir_name/backend.tfbackend
 role_arn = "${ROLE_ARN}"
 bucket = "${BUCKET}"
 key = "${BUCKET_KEY}"
@@ -32,13 +37,14 @@ encrypt = true
 
 EOF
 
-terraform init -input=false -backend-config="backend.tfbackend"
+terraform init -chdir=$local_dir_name -input=false -backend-config="backend.tfbackend"
 
 for name in $NAMES
 do
     echo $name
-    echo "::set-output name=$name::$(terraform output $name)"
+    echo "::set-output name=$name::$(terraform -chdir=$local_dir_name output $name)"
 done
 
 # Cleanup
-rm -r .terraform $HOME/.terraformrc main.tf backend.tfbackend .terraform.lock.hcl
+cd ..
+rm -r $local_dir_name
