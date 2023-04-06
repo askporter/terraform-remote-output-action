@@ -36,7 +36,7 @@ encrypt = true
 
 EOF
 
-terraform init -chdir=$local_dir_name -input=false -backend-config="backend.tfbackend"
+terraform -chdir=$local_dir_name init -input=false -backend-config="backend.tfbackend"
 
 for name in $NAMES
 do
