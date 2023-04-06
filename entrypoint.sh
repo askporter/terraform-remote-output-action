@@ -45,4 +45,4 @@ do
 done
 
 # Cleanup
-rm $HOME/.terraformrc main.tf backend.tfbackend
+rm -r .terraform $HOME/.terraformrc main.tf backend.tfbackend .terraform.lock.hcl
