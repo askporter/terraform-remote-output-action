@@ -1,6 +1,10 @@
 #!/bin/sh
 set -e
 
+ls -lah .
+
+ls -lah $HOME
+
 ROLE_ARN=$1
 BUCKET=$2
 BUCKET_KEY=$3
