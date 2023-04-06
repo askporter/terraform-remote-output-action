@@ -11,7 +11,6 @@ NAMES=$6
 local_dir_name=terraform-remote-output-action
 
 mkdir -p $local_dir_name
-cd $local_dir_name
 
 cat << EOF > $HOME/.terraformrc
 credentials "app.terraform.io" {
@@ -46,5 +45,4 @@ do
 done
 
 # Cleanup
-cd ..
 rm -r $local_dir_name
