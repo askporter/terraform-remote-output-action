@@ -39,3 +39,6 @@ do
     echo $name
     echo "::set-output name=$name::$(terraform output $name)"
 done
+
+# Cleanup
+rm $HOME/.terraformrc main.tf backend.tfbackend
