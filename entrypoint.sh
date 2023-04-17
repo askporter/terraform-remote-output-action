@@ -30,5 +30,5 @@ terraform init
 for name in $NAMES
 do
     echo $name
-    echo "::set-output name=$name::$(terraform output $name)"
+    echo "$name=$(terraform output $name)" >> $GITHUB_OUTPUT
 done
