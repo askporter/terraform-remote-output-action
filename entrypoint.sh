@@ -41,7 +41,7 @@ terraform -chdir=$local_dir_name init -input=false -backend-config="backend.tfba
 for name in $NAMES
 do
     echo $name
-    echo "::set-output name=$name::$(terraform -chdir=$local_dir_name output $name)"
+    echo "$name=$(terraform -chdir=$local_dir_name output $name)" >> $GITHUB_OUTPUT
 done
 
 # Cleanup
