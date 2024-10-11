@@ -21,7 +21,12 @@ EOF
 cat << EOF > $local_dir_name/main.tf
 terraform {
   required_version = ">= 1.9.5"
-  required_providers {}
+  required_providers {
+    aws = {
+        source  = "hashicorp/aws"
+        version = "!= 5.71.0"
+      }
+  }
   backend "s3" {}
 }
 EOF
